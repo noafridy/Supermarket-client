@@ -1,0 +1,35 @@
+<form *ngIf="!(showeForm)" class ="Registration-form" [formGroup]="newRegistrationForm1" (ngSubmit)="sendForm()" >
+  <h4 class="Registration-title">Registration</h4><br />
+  <input class="form-control" formControlName="ID" placeholder="Please insert ID"><br/>
+  <input class="form-control" formControlName="username" placeholder="Please insert Username"><br/>
+  <input class="form-control" formControlName="passwored" placeholder="Please insert passwored"><br/>
+  <input class="form-control" formControlName="passwored2" placeholder="Please insert passwored again"><br/>
+  <button class="btn btn-primary"> Continued </button>
+
+  <div class="login-bottom">
+  <label class="login-link">Already a member?</label> <a routerLink="/login">Click here</a>
+  </div>
+</form>
+<br/>
+
+<form *ngIf="showeForm" class ="Registration-form" [formGroup]="newRegistrationForm2" (ngSubmit)="sendForm()" >
+ <label class="form-label">Please select city: </label> 
+  <select  class="form-control" formControlName="city"  >
+    <option >Pardes Hanna</option>
+    <option >Haifa </option>
+    <option >Hadera </option>
+    <option >Kfar Saba </option>
+    <option >Hod Hasharon </option>
+    <option >Raanana </option>
+    <option >Herzliya </option>
+    <option >Tel Aviv </option>
+    <option >Kiryat Gat </option>
+    <option >Beer Sheva </option>
+ </select><br/>
+  <input class="form-control" formControlName="street" placeholder="Please insert street"><br/>
+  <input class="form-control" formControlName="firslName" placeholder="Please insert firslName"><br/>
+  <input class="form-control" formControlName="lastName" placeholder="Please insert lastName"><br/>
+  <button class="btn btn-primary"> Submit </button>
+</form>
+
+<router-outlet></router-outlet>

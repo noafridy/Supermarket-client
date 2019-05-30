@@ -1,0 +1,21 @@
+.header {
+  background-color: #bbcee9;
+  display: flex;
+  justify-content: space-between;
+  line-height: 100px;
+}
+
+img {
+  margin: 20px;
+  width: 70px;
+  height: 70px;
+}
+
+.header-links>a {
+  margin-right: 20px;
+  color: #000000;
+}
+
+.header-links{
+  margin-top: auto;
+}

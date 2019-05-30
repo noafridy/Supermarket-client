@@ -1,0 +1,43 @@
+/* .login{
+    background-image: url("/src/app/img/cover.jpg");
+
+} */
+
+.login-form {
+    max-width: 300px;
+    height: 300px;
+    /* display: inline-block; */
+    /* margin-top: 150px; */
+    border: 1px solid #20599a;
+    border-radius: 5px;
+    padding: 8px;
+    background-color: #ffffff;
+    /* margin: auto; */
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-title {
+    color: #20599a;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.form-label {
+    margin-top: 10px;
+    color: #495057;
+}
+
+.btn {
+    width: 100%;
+}
+
+.login-link {
+    margin-top: 20px;
+    color: #20599a;
+}
+
+.login-bottom {
+    text-align: center;
+}
