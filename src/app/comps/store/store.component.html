@@ -1,0 +1,31 @@
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Milk&Eggs</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Vegetabler&Fruits</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Meat&Fish</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Wine&Drinks</a>
+  </li>
+</ul>
+
+<div class="cart">
+  <app-cart></app-cart>
+</div>
+<!-- admin -->
+<div *ngIf="isAdmin" class="new-products">
+    <app-new-product></app-new-product>
+  </div>
+
+<div class="products">
+    <app-products></app-products>
+  </div>
+
+  <!-- ProductName:String,
+    category:{ type: Schema.Types.ObjectId, ref: 'Category'},
+    price:Number,
+    img:String -->

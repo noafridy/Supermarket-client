@@ -3,7 +3,7 @@ export class User {
     lastName: string;
     username: string;  //mail
     ID: number; // need to be PK
-    passwored: string;
+    password: string;
     city: string;
     street: string;
     rol:string;

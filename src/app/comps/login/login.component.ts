@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  allUser: any[] =[];
+  // allUser: any[] = [];
   newLoginForm = new FormGroup({
     // its need to be like model
     username: new FormControl('', Validators.required),
-    passwored: new FormControl('',Validators.required),
+    password: new FormControl('', Validators.required),
   });
 
   constructor(private userService: UserService, private router: Router) { }
@@ -23,11 +23,16 @@ export class LoginComponent implements OnInit {
   }
 
   sendForm() {
-    // this.userService.addNewUser(this.newLoginForm.value).subscribe(data => {
-    //    this.userService.refresh.emit('add');
-    //    // this.router.navigate(['/registration']);
-    //    this.showeForm = true;
-    //  })
-   }
-
+    this.userService.login(this.newLoginForm.value).subscribe(user => {
+      if (user.errorMessage) {
+        alert(user.errorMessage);
+        return;
+      }
+      if (user) {
+        localStorage.setItem('userInfo', JSON.stringify(user)); //נשמר היוזר על מפתח יוזראינפו בלוקאלסטוראג
+        this.userService.userInfoEE.emit(user);
+        this.router.navigate(['']);
+      }
+    });
+  }
 }

@@ -31,7 +31,6 @@ export class RegistrationComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    // this.showeForm = false;
   }
 
   sendForm() {

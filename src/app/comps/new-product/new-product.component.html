@@ -1,0 +1,10 @@
+<form class ="new-product-form" [formGroup]="newProductForm" (ngSubmit)="sendForm()" >
+    <h4 class="title">Add New Product</h4><br />
+    <input class="form-control" formControlName="ProductName" placeholder="Please insert Product Name"><br/>
+    <input class="form-control" formControlName="category" placeholder="Please insert category"><br/>
+    <input class="form-control" formControlName="price" placeholder="Please insert price"><br/>
+    <input class="form-control" formControlName="img" placeholder="Please insert img"><br/>
+    <button class="btn btn-primary"> Save </button>
+  </form>
+  <br/>
+

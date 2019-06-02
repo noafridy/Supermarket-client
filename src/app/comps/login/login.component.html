@@ -2,7 +2,7 @@
   <form class ="login-form" [formGroup]="newLoginForm" (ngSubmit)="sendForm()" >
   <h4 class="login-title">Login</h4><br />
   <input class="form-control" formControlName="username" placeholder="Please insert user name"><br/>
-  <input class="form-control" formControlName="passwored" placeholder="Please insert passwored"><br/>
+  <input class="form-control" formControlName="password" placeholder="Please insert password"><br/>
   <button class="btn btn-primary"> Login </button>
   <div class="login-bottom">
     <label class="login-link">Not a member yet?</label><a routerLink="/registration">Join now</a>

@@ -1,0 +1,15 @@
+ .new-product-form {
+     max-width: 350px;
+     border: 1px solid #20599a;
+     border-radius: 5px;
+     padding: 8px;
+ }
+
+ .title {
+     color: #20599a;
+     margin-top: 10px;
+ }
+
+ .btn {
+     width: 100%;
+ }

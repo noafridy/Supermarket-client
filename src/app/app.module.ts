@@ -9,13 +9,21 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './comps/registration/registration.component';
 import { LoginComponent } from './comps/login/login.component';
 import { HeaderComponent } from './comps/header/header.component';
+import { CartComponent } from './comps/cart/cart.component';
+import { StoreComponent } from './comps/store/store.component';
+import { ProductsComponent } from './comps/products/products.component';
+import { NewProductComponent } from './comps/new-product/new-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    CartComponent,
+    StoreComponent,
+    ProductsComponent,
+    NewProductComponent
   ],
   imports: [
     BrowserModule,

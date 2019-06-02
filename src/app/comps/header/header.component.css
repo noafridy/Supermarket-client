@@ -11,7 +11,7 @@ img {
   height: 70px;
 }
 
-.header-links>a {
+.header-links>a, label {
   margin-right: 20px;
   color: #000000;
 }
