@@ -1,7 +1,9 @@
  .new-product-form {
      max-width: 350px;
-     border: 1px solid #20599a;
-     border-radius: 5px;
+     border-top: 1px solid #20599a;
+     /* border-bottom: 1px solid #20599a; */
+     /* border: 1px solid #20599a; */
+     /* border-radius: 5px; */
      padding: 8px;
  }
 

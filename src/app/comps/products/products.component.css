@@ -1,3 +1,11 @@
-p{
-    font-size: 12px;
+.card{
+    border: 1px solid #20599a;
+    border-radius: 5px;
+    margin: 10px;
+    max-width: 200px;
+    height: 200px;
+}
+
+img{
+    width: 100%;
 }

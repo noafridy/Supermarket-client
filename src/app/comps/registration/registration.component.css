@@ -11,6 +11,10 @@
     margin-right: auto;
 }
 
+.invalid-feedback-custom {
+    color: red;
+}
+
 .Registration-title{
     color: #20599a;
     margin-top: 10px;

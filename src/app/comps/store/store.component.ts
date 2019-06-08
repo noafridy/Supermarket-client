@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreComponent implements OnInit {
 
-  isAdmin:boolean=true;
+ 
   // newRegistrationForm2 = new FormGroup({
   //   // its need to be like model
   //   city: new FormControl('', Validators.required),

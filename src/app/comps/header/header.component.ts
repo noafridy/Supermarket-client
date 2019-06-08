@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
   userLogout() {
     this.userService.logout().subscribe(msg => {
-      localStorage.setItem('userInfo', "{}" );
+      localStorage.clear();
       window.location.pathname = '/';
     });
   }

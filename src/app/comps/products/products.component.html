@@ -1,6 +1,19 @@
 <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <img class="card-img-top" src="{{product.img}}" alt="Card image cap">
     <div class="card-body">
-      <p class="card-text">testjhdkwhkhqg</p>
+      <span class="card-text">{{product.ProductName}}</span> <br/>
+      <span class="card-text">{{product.price}}</span>
+      <span class="currency">₪</span>
     </div>
   </div>
+
+
+
+
+  <!-- export class Product {
+    ProductName:string;
+    category: string;
+    price: number;
+    img :string;
+    _id: string; 
+} -->

@@ -16,6 +16,11 @@ img {
   color: #000000;
 }
 
-.header-links{
+.header-links {
   margin-top: auto;
+}
+
+.links {
+  cursor: pointer;
+  color: blue;
 }

@@ -1,7 +1,7 @@
 export class UserInfo {
-    firslName: string;
+    firstName: string;
     lastName: string;
     city: string;
     street: string;
-    rol:string;
+    role:string;
 }

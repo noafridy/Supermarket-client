@@ -7,6 +7,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
   styleUrls: ['./new-product.component.css']
 })
 export class NewProductComponent implements OnInit {
+
   newProductForm = new FormGroup({
     ProductName:new FormControl('', Validators.required),
     category: new FormControl('', Validators.required),

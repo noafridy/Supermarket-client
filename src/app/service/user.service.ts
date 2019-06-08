@@ -22,7 +22,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   addNewUser(newUser:User):Observable<any>{
-    return this.http.post(this.url , newUser , httpOptions);
+    return this.http.post(`${this.url}/join` , newUser , httpOptions);
   }
 
   login(user:User):Observable<any>{

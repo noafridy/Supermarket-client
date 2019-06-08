@@ -1,34 +1,60 @@
-<form *ngIf="!(showeForm)" class ="Registration-form" [formGroup]="newRegistrationForm1" (ngSubmit)="sendForm()" >
+<form *ngIf="!(showeForm)" class="Registration-form" [formGroup]="newRegistrationForm" (ngSubmit)="showNextForm()">
   <h4 class="Registration-title">Registration</h4><br />
-  <input class="form-control" formControlName="ID" placeholder="Please insert ID"><br/>
-  <input class="form-control" formControlName="username" placeholder="Please insert Username"><br/>
-  <input class="form-control" formControlName="passwored" placeholder="Please insert passwored"><br/>
-  <input class="form-control" formControlName="passwored2" placeholder="Please insert passwored again"><br/>
+  <input class="form-control" formControlName="ID" ng-required="true" placeholder="Please insert ID"><br />
+  <div *ngIf="step1 && f.ID.errors" class="invalid-feedback-custom">
+    <div *ngIf="f.ID.errors.required">ID is required</div>
+  </div>
+  <input type="email" class="form-control" formControlName="username" placeholder="Please insert your email"><br />
+  <div *ngIf="step1 && f.username.errors" class="invalid-feedback-custom">
+    <div *ngIf="f.username.errors.required">username is required</div>
+    <div *ngIf="f.username.errors.email">email is incorrect</div>
+  </div>
+  <input class="form-control" formControlName="password" placeholder="Please insert passwored"><br />
+  <div *ngIf="step1 && f.password.errors" class="invalid-feedback-custom">
+    <div *ngIf="f.password.errors.required">password is required</div>
+  </div>
+  <input class="form-control" formControlName="password2" placeholder="Please insert passwored again"><br />
+  <div *ngIf="step1 && f.password2.errors" class="invalid-feedback-custom">
+    <div *ngIf="f.password2.errors.required">password2 is required</div>
+    <div *ngIf="f.password2.errors.mustMatch">passwords must match</div>
+  </div>
   <button class="btn btn-primary"> Continued </button>
 
   <div class="login-bottom">
-  <label class="login-link">Already a member?</label> <a routerLink="/login">Click here</a>
+    <label class="login-link">Already a member?</label> <a routerLink="/login">Click here</a>
   </div>
 </form>
-<br/>
+<br />
 
-<form *ngIf="showeForm" class ="Registration-form" [formGroup]="newRegistrationForm2" (ngSubmit)="sendForm()" >
- <label class="form-label">Please select city: </label> 
-  <select  class="form-control" formControlName="city"  >
-    <option >Pardes Hanna</option>
-    <option >Haifa </option>
-    <option >Hadera </option>
-    <option >Kfar Saba </option>
-    <option >Hod Hasharon </option>
-    <option >Raanana </option>
-    <option >Herzliya </option>
-    <option >Tel Aviv </option>
-    <option >Kiryat Gat </option>
-    <option >Beer Sheva </option>
- </select><br/>
-  <input class="form-control" formControlName="street" placeholder="Please insert street"><br/>
-  <input class="form-control" formControlName="firslName" placeholder="Please insert firslName"><br/>
-  <input class="form-control" formControlName="lastName" placeholder="Please insert lastName"><br/>
+<form *ngIf="showeForm" class="Registration-form" [formGroup]="newRegistrationForm" (ngSubmit)="sendForm()">
+  <label class="form-label">Please select city: </label>
+  <select class="form-control" formControlName="city">
+    <option>Pardes Hanna</option>
+    <option>Haifa </option>
+    <option>Hadera </option>
+    <option>Kfar Saba </option>
+    <option>Hod Hasharon </option>
+    <option>Raanana </option>
+    <option>Herzliya </option>
+    <option>Tel Aviv </option>
+    <option>Kiryat Gat </option>
+    <option>Beer Sheva </option>
+  </select><br />
+  <div *ngIf="step2 && f.city.errors" class="invalid-feedback-custom">
+    <div *ngIf="f.city.errors.required">City is required</div>
+  </div>
+  <input class="form-control" formControlName="street" placeholder="Please insert street"><br />
+  <div *ngIf="step2 && f.city.errors" class="invalid-feedback-custom">
+    <div *ngIf="f.city.errors.required">Street is required</div>
+  </div>
+  <input class="form-control" formControlName="firstName" placeholder="Please insert first name"><br />
+  <div *ngIf="step2 && f.street.errors" class="invalid-feedback-custom">
+    <div *ngIf="f.street.errors.required">First name is required</div>
+  </div>
+  <input class="form-control" formControlName="lastName" placeholder="Please insert last name"><br />
+  <div *ngIf="step2 && f.lastName.errors" class="invalid-feedback-custom">
+      <div *ngIf="f.lastName.errors.required">Last name is required</div>
+    </div>
   <button class="btn btn-primary"> Submit </button>
 </form>
 
