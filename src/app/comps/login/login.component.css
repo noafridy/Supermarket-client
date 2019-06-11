@@ -8,14 +8,23 @@
     height: 300px;
     /* display: inline-block; */
     /* margin-top: 150px; */
-    border: 1px solid #20599a;
-    border-radius: 5px;
+    /* border: 1px solid #20599a;
+    border-radius: 5px; */
     padding: 8px;
     background-color: #ffffff;
     /* margin: auto; */
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.login-form button {
+    background: #1ccfcf;
+    border-color: #1cc7c7;
+}
+
+.login-form h4 {
+    color: #1ccfcf;
 }
 
 .login-title {

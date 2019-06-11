@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
+// import { ProductService } from '../../service/product.service';
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit {
-
+  // showePanal: boolean = true;
  
   // newRegistrationForm2 = new FormGroup({
   //   // its need to be like model
@@ -16,7 +16,8 @@ export class StoreComponent implements OnInit {
   //   lastName: new FormControl('', Validators.required)
   // });
 
-  constructor( ) { }
+  constructor() { }
+
   // constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {

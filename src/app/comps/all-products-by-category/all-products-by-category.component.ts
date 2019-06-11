@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../service/product.service';
 import { Product } from '../../models/product';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-products-by-category',
@@ -14,23 +15,15 @@ export class AllProductsByCategoryComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.productService.getProductsByCategory('Milk&Eggs').subscribe(data => {
+    this.getProductByCategory('Milk&Eggs');
+  }
+
+   getProductByCategory(category) {
+    this.productService.getProductsByCategory(category).subscribe(data => {
       this.allProducts = data;
+      // this.router.navigate(['store/category']);
     })
-
-    // this.userService.login(this.newLoginForm.value).subscribe(user => {
-    //   if (user.errorMessage) {
-    //     alert(user.errorMessage);
-    //     return;
-    //   }
-    //   if (user) {
-    //     localStorage.setItem('userInfo', JSON.stringify(user)); //נשמר היוזר על מפתח יוזראינפו בלוקאלסטוראג
-    //     this.userService.userInfoEE.emit(user);
-    //     this.router.navigate(['']);
-    //   }
-    // });
-
-
+  
   }
 
 }

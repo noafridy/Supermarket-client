@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       if (user) {
         localStorage.setItem('userInfo', JSON.stringify(user)); //נשמר היוזר על מפתח יוזראינפו בלוקאלסטוראג
         this.userService.userInfoEE.emit(user);
-        this.router.navigate(['']);
+        this.router.navigate(['store']);
       }
     });
   }

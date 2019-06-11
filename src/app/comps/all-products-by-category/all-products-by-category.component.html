@@ -1,3 +1,18 @@
+<ul class="nav justify-content-end">
+    <li class="nav-item">
+      <span class="nav-link active" (click)="getProductByCategory('Milk&Eggs')" >Milk&Eggs</span>
+    </li>
+    <li class="nav-item" >
+      <span class="nav-link" (click)="getProductByCategory('Vegetabler&Fruits')" >Vegetabler&Fruits</span>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link"  (click)="getProductByCategory('Meat&Fish')">Meat&Fish</span>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link" (click)="getProductByCategory('Wine&Drinks')">Wine&Drinks</span>
+    </li>
+  </ul>
+
 <div class="all-products">
   <app-products *ngFor="let p of allProducts" [product]="p">
 </app-products>  

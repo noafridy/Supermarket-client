@@ -14,6 +14,9 @@ import { StoreComponent } from './comps/store/store.component';
 import { ProductsComponent } from './comps/products/products.component';
 import { NewProductComponent } from './comps/new-product/new-product.component';
 import { AllProductsByCategoryComponent } from './comps/all-products-by-category/all-products-by-category.component';
+import { AboutComponent } from './comps/about/about.component';
+import { StoreDetailsComponent } from './comps/store-details/store-details.component';
+import { HomeComponent } from './comps/home/home.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { AllProductsByCategoryComponent } from './comps/all-products-by-category
     StoreComponent,
     ProductsComponent,
     NewProductComponent,
-    AllProductsByCategoryComponent
+    AllProductsByCategoryComponent,
+    AboutComponent,
+    StoreDetailsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
