@@ -1,0 +1,28 @@
+<form [formGroup]="orderForm">
+
+    <button class="btn btn-primary"> Payment </button>
+</form>
+
+<!-- <form *ngIf="!(showeForm)" class="Registration-form" [formGroup]="newRegistrationForm" (ngSubmit)="showNextForm()">
+    <h4 class="Registration-title">Registration</h4><br />
+    <input class="form-control" formControlName="ID" ng-required="true" placeholder="Please insert ID"><br />
+    <div *ngIf="step1 && f.ID.errors" class="invalid-feedback-custom">
+      <div *ngIf="f.ID.errors.required">ID is required</div>
+    </div>
+    <input type="email" class="form-control" formControlName="username" placeholder="Please insert your email"><br />
+    <div *ngIf="step1 && f.username.errors" class="invalid-feedback-custom">
+      <div *ngIf="f.username.errors.required">username is required</div>
+      <div *ngIf="f.username.errors.email">email is incorrect</div>
+    </div>
+    <input class="form-control" formControlName="password" placeholder="Please insert passwored"><br />
+    <div *ngIf="step1 && f.password.errors" class="invalid-feedback-custom">
+      <div *ngIf="f.password.errors.required">password is required</div>
+    </div>
+    <input class="form-control" formControlName="password2" placeholder="Please insert passwored again"><br />
+    <div *ngIf="step1 && f.password2.errors" class="invalid-feedback-custom">
+      <div *ngIf="f.password2.errors.required">password2 is required</div>
+      <div *ngIf="f.password2.errors.mustMatch">passwords must match</div>
+    </div>
+    <button class="btn btn-primary"> Payment </button>
+
+  </form> -->

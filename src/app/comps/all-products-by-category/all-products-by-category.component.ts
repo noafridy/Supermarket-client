@@ -21,7 +21,6 @@ export class AllProductsByCategoryComponent implements OnInit {
    getProductByCategory(category) {
     this.productService.getProductsByCategory(category).subscribe(data => {
       this.allProducts = data;
-      // this.router.navigate(['store/category']);
     })
   
   }

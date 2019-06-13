@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-// import { Injectable ,EventEmitter } from '@angular/core';
+import { Injectable ,EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Product } from '../models/product';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,6 +14,7 @@ const httpOptions = {
 })
 export class ProductService {
 
+  productDataEE: EventEmitter<Product> = new EventEmitter();
   productUrl: string = "api/product";
 
   constructor(private http: HttpClient) { }
@@ -22,12 +23,13 @@ export class ProductService {
     return this.http.get(`${this.productUrl}/${categoryName}`);
   }
 
-  // addNewUser(newUser: User): Observable<any> {
-  //   return this.http.post(`${this.url}/join`, newUser, httpOptions);
-  // }
-  // getAllSongs(): Observable<any> {
-  //   return this.http.get(this.url);
-  // }
+  addNewProduct(newProduct: Product): Observable<any> {
+    return this.http.post(this.productUrl, newProduct, httpOptions);
+  }
+
+  getAllCategory(): Observable<any> {
+    return this.http.get(`${this.productUrl}/category`);
+  }
 
   // addNewUser(newUser:User):Observable<any>{
   //   return this.http.post(this.url , newUser , httpOptions);

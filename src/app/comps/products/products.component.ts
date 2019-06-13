@@ -9,9 +9,14 @@ import { ProductService } from '../../service/product.service';
 export class ProductsComponent implements OnInit {
 
   @Input() product: Product;
+  popup:boolean =false;
+
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
   }
 
+  showPopup() {
+  this.popup=!this.popup;
+  }
 }

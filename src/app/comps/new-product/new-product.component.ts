@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-
+import { ProductService } from '../../service/product.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
@@ -8,6 +9,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 })
 export class NewProductComponent implements OnInit {
 
+  allCategory: any[] =[];
   newProductForm = new FormGroup({
     ProductName:new FormControl('', Validators.required),
     category: new FormControl('', Validators.required),
@@ -15,19 +17,33 @@ export class NewProductComponent implements OnInit {
     img: new FormControl('', Validators.required),
   })
 
-  constructor() { }
-  // constructor(private userService: UserService, private router: Router) { }
+  constructor(private productService:ProductService, private router: Router) { }
 
   ngOnInit() {
+    this.productService.getAllCategory().subscribe( CategoryData => {
+      this.allCategory = CategoryData;
+    })
   }
-  // sendForm() {
-  //   this.userService.addNewUser(this.newRegistrationForm1.value).subscribe(data => {
-  //      this.userService.refresh.emit('add');
-  //      // this.router.navigate(['/registration']);
-  //      this.showeForm = true;
-  //    })
-  //  }
 
+  sendForm(){
+    debugger
+    this.productService.addNewProduct(this.newProductForm.value).subscribe(product=>{
+      this.productService.productDataEE.emit(product);
+    })
+  }
 }
 
 
+// sendForm() {
+//   this.userService.login(this.newLoginForm.value).subscribe(user => {
+//     if (user.errorMessage) {
+//       alert(user.errorMessage);
+//       return;
+//     }
+//     if (user) {
+//       localStorage.setItem('userInfo', JSON.stringify(user)); //נשמר היוזר על מפתח יוזראינפו בלוקאלסטוראג
+//       this.userService.userInfoEE.emit(user);
+//       this.router.navigate(['store']);
+//     }
+//   });
+// }

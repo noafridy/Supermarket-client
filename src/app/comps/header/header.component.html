@@ -1,5 +1,19 @@
 <div class="header">
   <img src='/assets/img/logo3.png'>
+
+  <form class="form-inline">
+      <div class="form-group mb-2">
+        <label for="staticEmail2" class="sr-only">Search</label>
+        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Search Product">
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="inputPassword2" class="sr-only">name</label>
+        <input type="password" class="form-control" id="inputPassword2" placeholder="Insert name">
+      </div>
+      <i class="fas fa-search"></i>
+      <!-- <button type="submit" class="btn btn-primary mb-2">Confirm identity</button> -->
+    </form>
+  
   <div >
     <div class="header-links" *ngIf="!userInfo">
         <a class="links" routerLink="/login">Login</a>

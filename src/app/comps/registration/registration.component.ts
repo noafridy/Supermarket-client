@@ -65,7 +65,6 @@ export class RegistrationComponent implements OnInit {
   showNextForm() {
     this.step1 = true;
     const controlers = this.newRegistrationForm.value;
-debugger
     if (controlers.ID === "" ||
       controlers.username === "" ||
       controlers.password === "" ||

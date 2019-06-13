@@ -5,8 +5,13 @@
   <div *ngIf="isAdmin" class="new-products">
     <app-new-product></app-new-product>
   </div>
+
   <div *ngIf="!isAdmin" class="user-cart">
     test
   </div>
   <h6>Total</h6>
+  <button routerLink="/order-home" >Order</button>
 </div>
+<router-outlet></router-outlet>
+
+

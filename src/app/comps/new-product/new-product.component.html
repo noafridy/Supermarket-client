@@ -1,10 +1,40 @@
 <form class ="new-product-form" [formGroup]="newProductForm" (ngSubmit)="sendForm()" >
     <h4 class="title">Add New Product</h4><br />
     <input class="form-control" formControlName="ProductName" placeholder="Please insert Product Name"><br/>
-    <input class="form-control" formControlName="category" placeholder="Please insert category"><br/>
+    <!-- <input class="form-control" formControlName="category" placeholder="Please insert category"><br/> -->
+    Please select category name: <br/> 
+    <select class="form-control" formControlName="category" >
+        <option *ngFor="let c of allCategory" [value]="c._id">
+          {{c.categoryName}}
+        </option>
+        </select ><br/>
+
     <input class="form-control" formControlName="price" placeholder="Please insert price"><br/>
     <input class="form-control" formControlName="img" placeholder="Please insert img"><br/>
     <button class="btn btn-primary"> Save </button>
   </form>
   <br/>
 
+
+  <!-- export class Product {
+    ProductName:string;
+    category: string;
+    price: number;
+    img :string;
+    _id: string; 
+} -->
+
+<!-- 
+  <div class="login">
+      <form class ="login-form" [formGroup]="newLoginForm" (ngSubmit)="sendForm()" >
+      <h4 class="login-title">Login</h4><br />
+      <input class="form-control" formControlName="username" placeholder="Please insert user name"><br/>
+      <input class="form-control" formControlName="password" placeholder="Please insert password"><br/>
+      <button class="btn btn-primary"> Login </button>
+      <div class="login-bottom">
+        <label class="login-link">Not a member yet?</label><a routerLink="/registration">Join now</a>
+      </div>
+    </form>
+    <br/>
+    </div>
+    <router-outlet></router-outlet> -->

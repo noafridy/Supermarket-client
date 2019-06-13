@@ -1,19 +1,14 @@
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{product.img}}" alt="Card image cap">
-    <div class="card-body">
-      <span class="card-text">{{product.ProductName}}</span> <br/>
-      <span class="card-text">{{product.price}}</span>
-      <span class="currency">₪</span>
-    </div>
+<div class="popup" *ngIf='popup'>
+  <input class="popup-input" placeholder="Quantity"> <br />
+  <i class="fas fa-cart-plus" (click)="showPopup()"></i>
+</div>
+
+<div class="card popup" style="width: 18rem;" (click)="showPopup()">
+  <!-- <input class="popuptext" id="myPopup" placeholder="Quantity"></input> -->
+  <img class="card-img-top" src="{{product.img}}" alt="Card image cap">
+  <div class="card-body">
+    <span class="card-text">{{product.ProductName}}</span> <br />
+    <span class="card-text">{{product.price}}</span>
+    <span class="currency">₪</span>
   </div>
-
-
-
-
-  <!-- export class Product {
-    ProductName:string;
-    category: string;
-    price: number;
-    img :string;
-    _id: string; 
-} -->
+</div>
