@@ -1,5 +1,7 @@
-<div class="cart">
+<div class="cart {{toggleShow}}">
   <h4>My Cart</h4>
+  <i *ngIf="show" class="fas fa-chevron-left" (click)="toggleCart()"></i>
+  <i *ngIf="!show" class="fas fa-chevron-right" (click)="toggleCart()"></i>
 
   <!-- admin -->
   <div *ngIf="isAdmin" class="new-products">

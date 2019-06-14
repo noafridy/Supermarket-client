@@ -3,12 +3,45 @@
     position: relative;
     left: 10px;
 } */
-h4{
+.cart {
+    position: relative;
+    display: inline-block;
+    width: 350px;
+    height: 100%;
+    background-color: antiquewhite;
+    border: 1px solid black;
+    border-radius: 5px;
+    transition: left 500ms ease-in-out;
+}
+
+.cart.show {
+    left: 0;
+}
+
+.cart.hide {
+    left: -350px;
+}
+
+.fas.fa-chevron-left, .fas.fa-chevron-right{
+    position: absolute;
+    right: -35px;
+    top: -1px;
+    background: antiquewhite;
+    padding: 13px;
+    border: 1px solid;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 0;
+    cursor: pointer;
+}
+
+h4 {
+    display: inline-block;
     margin-left: 20px;
     color: #20599a;
 }
 
-h6{
+h6 {
     margin-left: 20px;
     color: #20599a;
 }

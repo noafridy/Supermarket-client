@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class CartComponent implements OnInit {
   userRole: String = "";
   isAdmin: boolean = false;
+  toggleShow: String = "show";
+  show: boolean = true;
 
   constructor() { }
   // constructor(private userService: UserService) { }
@@ -20,5 +22,10 @@ export class CartComponent implements OnInit {
   isItAdmin() {
 
   }
-  
+
+  toggleCart() {
+    this.show = !this.show;
+    (this.toggleShow === 'show') ? (this.toggleShow = 'hide') : (this.toggleShow = 'show');
+  }
+
 }
