@@ -8,8 +8,12 @@
     <app-new-product></app-new-product>
   </div>
 
-  <div *ngIf="!isAdmin" class="user-cart">
-    test
+  <div *ngIf="!isAdmin" class="user-list">
+    <div class="products-list" *ngFor="let p of allCartProducts">
+      <i class="fas fa-times" (click)="deleteItem()"></i>
+      <img src="{{p.img}}" style="height: 30px; width:30px;">  {{p.ProductName}} {{p.price}} {{p.amount}}
+    </div>
+
   </div>
   <div *ngIf="!isAdmin">
     <h6>Total</h6>

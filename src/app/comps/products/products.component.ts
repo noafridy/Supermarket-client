@@ -12,6 +12,7 @@ export class ProductsComponent implements OnInit {
   popup: boolean = false;
   userRole: String = "";
   isAdmin: boolean = false;
+  amount:Number = 0;
 
   constructor(private productService: ProductService) { }
 
@@ -25,12 +26,16 @@ export class ProductsComponent implements OnInit {
       this.popup = !this.popup;
     }
     if (this.userRole === 'admin') {
-      debugger
-      // const id = this.product._id
       this.productService.getProductsByID(this.product._id).subscribe(data => {
         this.productService.updateDataEE.emit(data);
       })
 
     }
   }
+
+  addToCart() {
+    this.productService.addProductToCartEE.emit({...this.product, amount: this.amount });
+    this.showPopup();
+  }
+
 }

@@ -2,6 +2,7 @@ import { Injectable ,EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from '../models/product';
+import { CartProducts } from 'src/app/models/cartProducts';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,6 +18,7 @@ export class ProductService {
   productDataEE: EventEmitter<Product> = new EventEmitter();
   SearchDataEE:EventEmitter<Product> = new EventEmitter();
   updateDataEE:EventEmitter<Product> = new EventEmitter();
+  addProductToCartEE:EventEmitter<CartProducts> = new EventEmitter();
   productUrl: string = "api/product";
 
   constructor(private http: HttpClient) { }
