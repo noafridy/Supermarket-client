@@ -9,20 +9,41 @@ import { Product } from '../../models/product';
   styleUrls: ['./all-products-by-category.component.css']
 })
 export class AllProductsByCategoryComponent implements OnInit {
-
+  selectedCategory: String = "Milk&Eggs"
   allProducts: Product[] = [];
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.getProductByCategory('Milk&Eggs');
+    this.refresh();
+    this.getProductByCategory(this.selectedCategory);
+    this.productService.SearchDataEE.subscribe(products => {
+      this.allProducts = products;
+    });
   }
 
-   getProductByCategory(category) {
+  getProductByCategory(category) {
+    this.selectedCategory = category;
     this.productService.getProductsByCategory(category).subscribe(data => {
       this.allProducts = data;
     })
-  
+  }
+
+  refresh() {
+    this.productService.refreshEE.subscribe(data => {
+      if (this.selectedCategory) {
+        this.productService.getProductsByCategory(this.selectedCategory).subscribe(data => {
+          this.allProducts = data;
+        });
+      } else {
+        this.productService.getAllProducts().subscribe(data => {
+          this.allProducts = data;
+        });
+      }
+
+    });
+
+
   }
 
 }

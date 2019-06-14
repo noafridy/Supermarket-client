@@ -9,14 +9,28 @@ import { ProductService } from '../../service/product.service';
 export class ProductsComponent implements OnInit {
 
   @Input() product: Product;
-  popup:boolean =false;
+  popup: boolean = false;
+  userRole: String = "";
+  isAdmin: boolean = false;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
+    this.userRole = JSON.parse(localStorage.getItem('userInfo')).role;
+    this.isAdmin = (this.userRole === 'admin');
   }
 
   showPopup() {
-  this.popup=!this.popup;
+    if (this.userRole === 'user') {
+      this.popup = !this.popup;
+    }
+    if (this.userRole === 'admin') {
+      debugger
+      // const id = this.product._id
+      this.productService.getProductsByID(this.product._id).subscribe(data => {
+        this.productService.updateDataEE.emit(data);
+      })
+
+    }
   }
 }

@@ -16,7 +16,7 @@ const httpOptions = {
 export class UserService {
 
   userInfoEE: EventEmitter<UserInfo> = new EventEmitter();
-  refresh: EventEmitter<string> = new EventEmitter();
+  // refresh: EventEmitter<string> = new EventEmitter();
   url: string = "api/user";
 
   constructor(private http: HttpClient) { }

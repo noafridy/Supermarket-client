@@ -14,9 +14,9 @@ img {
 .form-control-plaintext{
   width: 117px;
 }
-.fas{
+/* .fas{
   cursor: pointer;
-}
+} */
 
 .header-links>a, label {
   margin-right: 20px;

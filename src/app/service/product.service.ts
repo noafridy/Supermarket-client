@@ -13,11 +13,17 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ProductService {
-
+  refreshEE: EventEmitter<string> = new EventEmitter();
   productDataEE: EventEmitter<Product> = new EventEmitter();
+  SearchDataEE:EventEmitter<Product> = new EventEmitter();
+  updateDataEE:EventEmitter<Product> = new EventEmitter();
   productUrl: string = "api/product";
 
   constructor(private http: HttpClient) { }
+
+  getAllProducts(): Observable<any> {
+    return this.http.get(this.productUrl);
+  }
 
   getProductsByCategory(categoryName : String): Observable<any> {
     return this.http.get(`${this.productUrl}/${categoryName}`);
@@ -31,17 +37,16 @@ export class ProductService {
     return this.http.get(`${this.productUrl}/category`);
   }
 
-  // addNewUser(newUser:User):Observable<any>{
-  //   return this.http.post(this.url , newUser , httpOptions);
-  // }
+  getProductsByName(productsName : String): Observable<any> {
+    return this.http.get(`${this.productUrl}/name/${productsName}`);
+  }
 
+  getProductsByID(productsID : String): Observable<any> {
+    return this.http.get(`${this.productUrl}/id/${productsID}`);
+  }
 
-
-  // getAllArtists(): Observable<any> {
-  //   return this.http.get(this.url+"/artists");
-  // }
-
-  // deleteSong(id:string):Observable<any>{
-  //   return this.http.delete(`${this.url}/${id}` , httpOptions);
-  // }
+  updateProducts(product: Product): Observable<any>{
+    return this.http.put(this.productUrl, product, httpOptions);
+  }
+ 
 }

@@ -1,8 +1,12 @@
-<div class="popup" *ngIf='popup'>
+<!-- user -->
+<div *ngIf='!isAdmin'>
+  <div class="popup" *ngIf='popup' >
   <input class="popup-input" placeholder="Quantity"> <br />
   <i class="fas fa-cart-plus" (click)="showPopup()"></i>
 </div>
+</div>
 
+<!-- user and admin -->
 <div class="card popup" style="width: 18rem;" (click)="showPopup()">
   <!-- <input class="popuptext" id="myPopup" placeholder="Quantity"></input> -->
   <img class="card-img-top" src="{{product.img}}" alt="Card image cap">
