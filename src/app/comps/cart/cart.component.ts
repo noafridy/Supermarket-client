@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartProducts } from 'src/app/models/cartProducts';
 import { ProductService } from '../../service/product.service';
+import { element } from 'protractor';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -40,4 +41,10 @@ export class CartComponent implements OnInit {
     (this.toggleShow === 'show') ? (this.toggleShow = 'hide') : (this.toggleShow = 'show');
   }
 
+  deleteItem(el) {
+    const itemId = el.getAttribute('data-item-id');
+    this.allCartProducts = this.allCartProducts.map(item => { if (item._id !== itemId) return item }).filter(item => item !== undefined);
+    localStorage.setItem('userCart', JSON.stringify(this.allCartProducts));
+
+  }
 }

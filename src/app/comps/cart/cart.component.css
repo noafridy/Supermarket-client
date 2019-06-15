@@ -35,6 +35,10 @@
     cursor: pointer;
 }
 
+.fa-times{
+    cursor: pointer;
+}
+
 h4 {
     display: inline-block;
     margin-left: 20px;
