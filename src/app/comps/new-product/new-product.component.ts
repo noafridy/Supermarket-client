@@ -28,7 +28,6 @@ export class NewProductComponent implements OnInit {
     this.productService.updateDataEE.subscribe(product => {
       this.isSave = false;
       this.ID = product[0]._id;
-      debugger;
       this.newProductForm = new FormGroup({
         ProductName: new FormControl(product[0].ProductName, Validators.required),
         category: new FormControl(product[0].category._id, Validators.required),
@@ -56,7 +55,6 @@ export class NewProductComponent implements OnInit {
     } else {
 
       this.productService.addNewProduct(this.newProductForm.value).subscribe(product => {
-        debugger
         if (product) {
           this.productService.productDataEE.emit(product);
           alert("The product saved");

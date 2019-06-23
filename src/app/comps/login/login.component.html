@@ -1,6 +1,11 @@
 <div class="login">
   <form class ="login-form" [formGroup]="newLoginForm" (ngSubmit)="sendForm()" >
-  <h4 class="login-title">Login</h4><br />
+    <a *ngIf=flaglogin routerLink="/store" >
+      <h6 *ngIf=!flagShopping> Start Shopping</h6>
+      <h6 *ngIf=flagShopping> Resume Shopping</h6>
+    </a>
+  
+    <h4 class="login-title">Login</h4><br />
   <input class="form-control" formControlName="username" placeholder="Please insert user name"><br/>
   <input class="form-control" formControlName="password" placeholder="Please insert password"><br/>
   <button class="btn btn-primary"> Login </button>

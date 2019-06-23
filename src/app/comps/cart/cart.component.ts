@@ -18,6 +18,7 @@ export class CartComponent implements OnInit {
   // constructor(private userService: UserService) { }
 
   ngOnInit() {
+    alert('hey');
     this.loadCartItems();
     this.userRole = JSON.parse(localStorage.getItem('userInfo')).role;
     this.isAdmin = (this.userRole === 'admin');
@@ -25,6 +26,9 @@ export class CartComponent implements OnInit {
     this.productService.addProductToCartEE.subscribe(cartProduct => {
       this.allCartProducts.push(cartProduct);
       localStorage.setItem('userCart', JSON.stringify(this.allCartProducts));
+    
+    
+    
     });
 
   }
