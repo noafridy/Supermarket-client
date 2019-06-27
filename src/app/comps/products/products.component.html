@@ -1,8 +1,8 @@
 <!-- user -->
 <div *ngIf='!isAdmin'>
   <div class="popup" *ngIf='popup' >
-  <input [(ngModel)]="amount" class="popup-input" placeholder="Quantity"> <br />
-  <i class="fas fa-cart-plus" (click)="addToCart()"></i>
+  <input [(ngModel)]="amount" class="popup-input" placeholder="Quantity">
+  <button (click)="addToCart()"> save </button>
 </div>
 </div>
 

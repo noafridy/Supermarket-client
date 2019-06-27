@@ -11,12 +11,12 @@
   <div *ngIf="!isAdmin" class="user-list">
     <div class="products-list" *ngFor="let p of allCartProducts">
       <i #messageEl class="fas fa-times" (click)="deleteItem(messageEl)" [attr.data-item-id]="p._id" ></i>
-      <img src="{{p.img}}" style="height: 30px; width:30px;">  {{p.ProductName}} {{p.price}} {{p.amount}}
+      <img src="{{p.product.img}}" style="height: 30px; width:30px;">  {{p.product.ProductName}} {{p.quantity}}X {{p.product.price}}₪
     </div>
 
   </div>
   <div *ngIf="!isAdmin">
-    <h6>Total</h6>
+    <h6 *ngIf="total">Total: {{total}}</h6>
     <button routerLink="/order-home">Order</button>
 
   </div>

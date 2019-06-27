@@ -23,6 +23,29 @@ img{
   cursor: pointer;  
 }
 
+.popup input {
+  width: 100px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border: 1px solid #20599a;
+  padding-left: 5px;
+}
+
+.popup button {
+  text-transform: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 26px;
+  color: #fff;
+  background: #20599a;
+  border-color: transparent;
+  font-weight: 100;
+  font-size: 12px;
+  padding: 0px 9px;
+  vertical-align: bottom;
+  box-sizing: content-box;
+}
+
 /* .popuptext {
     visibility: hidden;
     width: 160px;

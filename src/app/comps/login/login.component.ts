@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
 
       this.cartService.getCart(userInfo._id).subscribe(data => {
         this.flagShopping = (data.cart.length > 0);
+        localStorage.setItem('shoppingCartId', JSON.stringify(data.cartId));
       });
     }
   }
@@ -46,6 +47,7 @@ export class LoginComponent implements OnInit {
         this.flaglogin = true;
         this.cartService.getCart(user._id).subscribe(data => {
           alert(data.message);
+          localStorage.setItem('shoppingCartId', JSON.stringify(data.cartId));
           this.flagShopping = (data.cart.length > 0);
         });
 
