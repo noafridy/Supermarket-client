@@ -3,6 +3,10 @@
     position: relative;
     left: 10px;
 } */
+.cart .highlightText {
+    background-color: yellow;
+}
+
 .cart {
     position: relative;
     display: inline-block;

@@ -4,7 +4,7 @@ import { RegistrationComponent } from './comps/registration/registration.compone
 import { LoginComponent } from './comps/login/login.component';
 import { StoreComponent } from './comps/store/store.component';
 import { HomeComponent } from './comps/home/home.component';
-import { OrderHomeComponent } from './comps/order-home/order-home.component';
+import { OrderComponent } from './comps/order/order.component';
 
 //מערך של ראטרים בו נכניס את הנתיבים
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'store', component: StoreComponent },
   { path: '',  component: HomeComponent },
-  { path: 'order-home',  component: OrderHomeComponent }
+  { path: 'order',  component: OrderComponent }
 
 ];
 

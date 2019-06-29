@@ -18,7 +18,6 @@ import { AboutComponent } from './comps/about/about.component';
 import { StoreDetailsComponent } from './comps/store-details/store-details.component';
 import { HomeComponent } from './comps/home/home.component';
 import { OrderComponent } from './comps/order/order.component';
-import { OrderHomeComponent } from './comps/order-home/order-home.component';
 
 @NgModule({
   declarations: [
@@ -34,17 +33,17 @@ import { OrderHomeComponent } from './comps/order-home/order-home.component';
     AboutComponent,
     StoreDetailsComponent,
     HomeComponent,
-    OrderComponent,
-    OrderHomeComponent
+    OrderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,  //זהו קובץ טייפסקריפט בו נרשום את כל הרוטים
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

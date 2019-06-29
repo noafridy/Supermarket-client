@@ -1,28 +1,35 @@
-<form [formGroup]="orderForm">
+<div class="order-page-wrapper">
+  <form [formGroup]="orderForm">
+    <!-- <label class="form-label">Please select city: </label> -->
+    <select class="form-control select-city" formControlName="city" (change)="changeCity($event)" >
+      <option value="" disabled>Please choose your city</option>
+      <option *ngFor="let city_name of cityNames" [ngValue]="city_name">{{city_name}}</option>
+    </select>
+    <button (click)="autoFillCity()">Auto Fill</button>
+    <div *ngIf="checkRequired && f.city.errors" class="invalid-feedback-custom">
+      <div *ngIf="f.city.errors.required">city is required</div>
+    </div>
 
-    <button class="btn btn-primary"> Payment </button>
-</form>
+    <input (dblclick)="autoFillStreet()" class="form-control" formControlName="street" placeholder='please enter your street'>
+    <div *ngIf="checkRequired && f.street.errors" class="invalid-feedback-custom">
+      <div *ngIf="f.street.errors.required">street is required</div>
+    </div>
 
-<!-- <form *ngIf="!(showeForm)" class="Registration-form" [formGroup]="newRegistrationForm" (ngSubmit)="showNextForm()">
-    <h4 class="Registration-title">Registration</h4><br />
-    <input class="form-control" formControlName="ID" ng-required="true" placeholder="Please insert ID"><br />
-    <div *ngIf="step1 && f.ID.errors" class="invalid-feedback-custom">
-      <div *ngIf="f.ID.errors.required">ID is required</div>
+    <input type="date" class="form-control" formControlName="shipmentDate" placeholder="Please insert city">
+    <div *ngIf="checkRequired && f.shipmentDate.errors" class="invalid-feedback-custom">
+      <div *ngIf="f.shipmentDate.errors.required">shipmentDate is required</div>
     </div>
-    <input type="email" class="form-control" formControlName="username" placeholder="Please insert your email"><br />
-    <div *ngIf="step1 && f.username.errors" class="invalid-feedback-custom">
-      <div *ngIf="f.username.errors.required">username is required</div>
-      <div *ngIf="f.username.errors.email">email is incorrect</div>
-    </div>
-    <input class="form-control" formControlName="password" placeholder="Please insert passwored"><br />
-    <div *ngIf="step1 && f.password.errors" class="invalid-feedback-custom">
-      <div *ngIf="f.password.errors.required">password is required</div>
-    </div>
-    <input class="form-control" formControlName="password2" placeholder="Please insert passwored again"><br />
-    <div *ngIf="step1 && f.password2.errors" class="invalid-feedback-custom">
-      <div *ngIf="f.password2.errors.required">password2 is required</div>
-      <div *ngIf="f.password2.errors.mustMatch">passwords must match</div>
-    </div>
-    <button class="btn btn-primary"> Payment </button>
 
-  </form> -->
+    <input class="form-control" formControlName="craditCard" placeholder="Please insert cradit card" (change)="changeCreditCard($event)">
+    <div *ngIf="checkRequired && f.craditCard.errors" class="invalid-feedback-custom">
+      <div *ngIf="f.craditCard.errors.required">cradit card is required</div>
+      <div *ngIf="f.craditCard.errors.invalidCardNumber">invalide craditcard number</div>
+    </div>
+
+    <div class="button-wrapper">
+      <button class="btn btn-primary" (click)="sendForm()"> Order </button>
+      <button class="btn btn-secondary" (click)="closeOrderPage()"> Back to shop </button>
+    </div>
+
+  </form>
+</div>

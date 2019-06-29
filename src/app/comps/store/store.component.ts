@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../../service/order.service';
 // import { ProductService } from '../../service/product.service';
 @Component({
   selector: 'app-store',
@@ -6,29 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit {
-  // showePanal: boolean = true;
- 
-  // newRegistrationForm2 = new FormGroup({
-  //   // its need to be like model
-  //   city: new FormControl('', Validators.required),
-  //   street: new FormControl('', Validators.required),
-  //   firslName: new FormControl('',Validators.required),
-  //   lastName: new FormControl('', Validators.required)
-  // });
 
-  constructor() { }
+  isOrder: boolean = false;
 
-  // constructor(private userService: UserService, private router: Router) { }
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
+    // this.orderService.showOrderEE.subscribe(this.isOrder);
+    this.orderService.showOrderEE.subscribe(data => {
+      this.isOrder = data;
+    });
   }
-
-  // sendForm() {
-  //   this.userService.addNewUser(this.newRegistrationForm1.value).subscribe(data => {
-  //      this.userService.refresh.emit('add');
-  //      // this.router.navigate(['/registration']);
-  //      this.showeForm = true;
-  //    })
-  //  }
 
 }

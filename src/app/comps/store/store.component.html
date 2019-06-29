@@ -1,13 +1,17 @@
 <div class="store-container">
 
   <div class="right" >
-    <div class="all-products">
+    <div *ngIf="!isOrder" class="all-products">
       <app-all-products-by-category></app-all-products-by-category>
     </div>
+
+    <div *ngIf="isOrder" class="order">
+        <app-order></app-order>
+      </div>
   </div>
   <div class="left" >
     <div class="cart">
-      <app-cart></app-cart>
+      <app-cart ></app-cart>
     </div>
   </div>
 

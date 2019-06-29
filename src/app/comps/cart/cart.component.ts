@@ -1,27 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CartProducts } from 'src/app/models/cartProducts';
 import { ProductService } from '../../service/product.service';
 import { CartService } from '../../service/cart.service';
-import { ActiveCart } from 'src/app/models/activeCart';
+// import { ActiveCart } from 'src/app/models/activeCart';
+import { OrderService } from '../../service/order.service';
+// import { FormGroup} from '@angular/forms';
+
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CartComponent implements OnInit {
-  allCartProducts: CartProducts[] = [];
-  userRole: String = "";
   isAdmin: boolean = false;
-  toggleShow: String = "show";
   show: boolean = true;
+  allCartProducts: any[] = [];
+  userRole: String = "";
+  toggleShow: String = "show";
   activeCartId: string;
   total: number = 0;
+  inOrder: Boolean = false;
+  query: string;
 
-  constructor(private productService: ProductService, private cartService: CartService) { }
+  constructor(private productService: ProductService, private cartService: CartService, private orderService: OrderService) { }
   // constructor(private userService: UserService) { }
 
   ngOnInit() {
+    // this.isOrder = false;
     const user = JSON.parse(localStorage.getItem('userInfo'));
     this.userRole = user.role;
     this.isAdmin = (this.userRole === 'admin');
@@ -40,13 +47,17 @@ export class CartComponent implements OnInit {
         this.updateTotalPrice(data.cart);
       });
     });
+
+    this.orderService.showOrderEE.subscribe(data => {
+      this.inOrder = false;
+    });
   }
 
   updateTotalPrice(cartItems) {
     // 1. we extract only the total of each item
     // 2. we then take the array of totals and do a sum on them with the reduce function
     // 3. toFixed - the number of digits after the dot (example: 4.00) here only 2 digits after number
-    if (cartItems.length === 0 ) {
+    if (cartItems.length === 0) {
       this.total = 0;
       return;
     }
@@ -61,10 +72,10 @@ export class CartComponent implements OnInit {
 
   deleteItem(el) {
     const itemId = el.getAttribute('data-item-id');
-    
+
     // update the cart to contain all products exept the one that we removed
     this.allCartProducts = this.allCartProducts.map(item => { if (item._id !== itemId) return item }).filter(item => item !== undefined);
-    
+
     // update total
     this.updateTotalPrice(this.allCartProducts);
 
@@ -73,4 +84,20 @@ export class CartComponent implements OnInit {
       console.log(response.message);
     });
   }
+
+  showOrder() {
+    this.orderService.showOrderEE.emit(true);
+    this.inOrder = true;
+  }
+
+   highlight(product) {
+    if(!this.query) {
+        return product;
+    }
+
+    return product.replace(new RegExp(this.query, "gi"), match => {
+        return '<span class="highlightText">' + match + '</span>';
+    });
+  }
+
 }

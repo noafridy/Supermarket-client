@@ -1,5 +1,17 @@
 <div class="cart {{toggleShow}}">
   <h4>My Cart</h4>
+
+  <div *ngIf="inOrder">
+    <div class="form-group mb-2">
+      <label type="text" readonly class="form-control-plaintext">Search Product</label>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <input [(ngModel)]="query" class="form-control">
+    </div>
+  </div>
+
+
+
   <i *ngIf="show" class="fas fa-chevron-left" (click)="toggleCart()"></i>
   <i *ngIf="!show" class="fas fa-chevron-right" (click)="toggleCart()"></i>
 
@@ -8,16 +20,23 @@
     <app-new-product></app-new-product>
   </div>
 
-  <div *ngIf="!isAdmin" class="user-list">
+   <!-- user -->
+   <div *ngIf="inOrder" >
+   </div>
+  <div  *ngIf="!isAdmin" class="user-list">
     <div class="products-list" *ngFor="let p of allCartProducts">
-      <i #messageEl class="fas fa-times" (click)="deleteItem(messageEl)" [attr.data-item-id]="p._id" ></i>
-      <img src="{{p.product.img}}" style="height: 30px; width:30px;">  {{p.product.ProductName}} {{p.quantity}}X {{p.product.price}}₪
+      <i *ngIf="!inOrder" #messageEl class="fas fa-times" (click)="deleteItem(messageEl)" [attr.data-item-id]="p._id"></i>
+      <img src="{{p.product.img}}" style="height: 30px; width:30px;"> <span [innerHTML]="highlight(p.product.ProductName)">{{p.product.ProductName}}</span> {{p.quantity}}X
+      {{p.product.price}}₪
     </div>
-
   </div>
+
   <div *ngIf="!isAdmin">
     <h6 *ngIf="total">Total: {{total}}</h6>
-    <button routerLink="/order-home">Order</button>
+    <button *ngIf="!inOrder" (click)="showOrder()">Order</button>
+    <h5 *ngIf="inOrder">No Changes Permitted Here!</h5>
+
+
 
   </div>
 </div>
