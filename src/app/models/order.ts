@@ -1,7 +1,11 @@
 export class Order {
+   user:string;
    city:string;
    street: string;
-   shipmentDate: string;
+   DD: string;
+   // orderDate: string;
    craditCard: number;
-   _id: string
+   totalCost: number;
+   ShoppingCart: string;
+   // _id: string
 }

@@ -83,7 +83,6 @@ export class RegistrationComponent implements OnInit {
       return;
     }
     this.userService.addNewUser(this.newRegistrationForm.value).subscribe(data => {
-      // this.userService.refresh.emit('add');
       if (data.Erorr) {
         alert(data.Erorr);
       } else {

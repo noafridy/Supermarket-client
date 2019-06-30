@@ -63,6 +63,7 @@ export class CartComponent implements OnInit {
     }
 
     this.total = cartItems.map(item => item.totalCost).reduce((accumulator, currentValue) => accumulator + currentValue).toFixed(2);
+    this.orderService.totalCost = Number(this.total);
   }
 
   toggleCart() {
@@ -90,13 +91,13 @@ export class CartComponent implements OnInit {
     this.inOrder = true;
   }
 
-   highlight(product) {
-    if(!this.query) {
-        return product;
+  highlight(product) {
+    if (!this.query) {
+      return product;
     }
 
     return product.replace(new RegExp(this.query, "gi"), match => {
-        return '<span class="highlightText">' + match + '</span>';
+      return '<span class="highlightText">' + match + '</span>';
     });
   }
 

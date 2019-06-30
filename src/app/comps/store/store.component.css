@@ -5,12 +5,6 @@
     flex-wrap: wrap;
 }
 
-/* .panal {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-} */
-
 .panalA {
     margin-left: 20px;
     margin-right: 20px;
@@ -31,4 +25,3 @@
 
 
 
-.all-products {}

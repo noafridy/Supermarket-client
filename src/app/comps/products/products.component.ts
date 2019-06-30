@@ -37,7 +37,7 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart() {
-    const shoppingCartId = JSON.parse(localStorage.getItem('shoppingCartId'));
+    const shoppingCartId = localStorage.getItem('shoppingCartId');
     this.newCartProducts = {
       product: this.product._id,
       quantity: Number(this.amount),

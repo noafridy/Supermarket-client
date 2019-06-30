@@ -1,5 +1,5 @@
 <div class="order-page-wrapper">
-  <form [formGroup]="orderForm">
+  <form *ngIf="!inReception" [formGroup]="orderForm">
     <!-- <label class="form-label">Please select city: </label> -->
     <select class="form-control select-city" formControlName="city" (change)="changeCity($event)" >
       <option value="" disabled>Please choose your city</option>
@@ -11,6 +11,7 @@
     </div>
 
     <input (dblclick)="autoFillStreet()" class="form-control" formControlName="street" placeholder='please enter your street'>
+    <label>*Double click for auto fill</label>
     <div *ngIf="checkRequired && f.street.errors" class="invalid-feedback-custom">
       <div *ngIf="f.street.errors.required">street is required</div>
     </div>
@@ -32,4 +33,19 @@
     </div>
 
   </form>
+
+  <!-- Order successful -->
+  <div *ngIf="inReception" class="card text-center">
+      <div class="card-header">
+        
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Your order was successful</h5>
+        <a class="card-text" href="/api/order/recipt/{{receiptId}}">Click here to download receipt</a><br/>
+        <a href="#" class="btn btn-primary" >Approval</a>
+      </div>
+      <div class="card-footer text-muted">
+      </div>
+    </div>
+
 </div>
