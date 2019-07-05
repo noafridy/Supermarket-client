@@ -62,18 +62,41 @@ export class RegistrationComponent implements OnInit {
     return this.newRegistrationForm.controls;
   }
 
-  showNextForm() {
-    this.step1 = true;
+  checkFieldValidation() {
     const controlers = this.newRegistrationForm.value;
     if (controlers.ID === "" ||
       controlers.username === "" ||
       controlers.password === "" ||
       controlers.password2 === "" ||
       (controlers.password !== controlers.password2) ||
-      (this.newRegistrationForm.controls.username.errors.email)) {
-      return;
-    } 
-    this.showeForm = true;
+      ((this.newRegistrationForm.controls.username.errors || {}).email)) {
+      return true;
+    }
+    return false;
+  }
+
+  showNextForm() {
+    this.step1 = true;
+
+    const ID = this.newRegistrationForm.value.ID;
+
+    // 1. ID does not exist in system
+    this.userService.checkIfUserAlreadyExist(ID).subscribe(data => {
+      if (data.code === 200) {
+        // user does not exist
+
+        // 2. all required fields are not filled and email is valid
+        if (this.checkFieldValidation()) {
+          alert('all required fields should be filled');
+          return;
+        }
+        this.showeForm = true;
+      } else {
+        // user exist
+        alert('this user already exist in the system');
+        return;
+      }
+    });
   }
 
   sendForm() {

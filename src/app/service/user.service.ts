@@ -21,28 +21,20 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  addNewUser(newUser:User):Observable<any>{
-    return this.http.post(`${this.url}/join` , newUser , httpOptions);
+  addNewUser(newUser: User): Observable<any> {
+    return this.http.post(`${this.url}/join`, newUser, httpOptions);
   }
 
-  login(user:User):Observable<any>{
-    return this.http.post(`${this.url}/login`, user , httpOptions);
+  login(user: User): Observable<any> {
+    return this.http.post(`${this.url}/login`, user, httpOptions);
   }
 
-  logout():Observable<any>{
+  logout(): Observable<any> {
     return this.http.post(`${this.url}/logout`, null, httpOptions);
   }
 
-  // getAllSongs(): Observable<any> {
-  //   return this.http.get(this.url);
-  // }
-
-  // getAllArtists(): Observable<any> {
-  //   return this.http.get(this.url+"/artists");
-  // }
-
-  // deleteSong(id:string):Observable<any>{
-  //   return this.http.delete(`${this.url}/${id}` , httpOptions);
-  // }
+  checkIfUserAlreadyExist(ID: string): Observable<any> {
+    return this.http.get(`${this.url}/checkUser/${ID}`);
+  }
 
 }
