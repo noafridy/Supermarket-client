@@ -16,14 +16,15 @@ export class NewProductComponent implements OnInit {
     category: new FormControl('', Validators.required),
     price: new FormControl('', Validators.required),
     img: new FormControl('', Validators.required),
-  })
+  });
+  fileToUpload: File = null;
 
   constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit() {
     this.productService.getAllCategory().subscribe(CategoryData => {
       this.allCategory = CategoryData;
-    })
+    });
 
     this.productService.updateDataEE.subscribe(product => {
       this.isSave = false;
@@ -33,16 +34,18 @@ export class NewProductComponent implements OnInit {
         category: new FormControl(product[0].category._id, Validators.required),
         price: new FormControl(product[0].price, Validators.required),
         img: new FormControl(product[0].img, Validators.required),
-      })
+      });
     });
 
   }
 
+  handleFileInput(fileInput: any) {
+    this.fileToUpload = <File>fileInput[0];
+  }
+
   sendForm() {
     if (this.ID) {
-      debugger
-      this.productService.updateProducts({...this.newProductForm.value, _id: this.ID}).subscribe(newProduct => {
-        debugger
+      this.productService.updateProducts({ ...this.newProductForm.value, _id: this.ID }).subscribe(newProduct => {
         if (newProduct) {
           this.productService.productDataEE.emit(newProduct);
           alert("The product updated");
@@ -53,8 +56,7 @@ export class NewProductComponent implements OnInit {
         return;
       })
     } else {
-
-      this.productService.addNewProduct(this.newProductForm.value).subscribe(product => {
+      this.productService.addNewProduct(this.newProductForm.value, this.fileToUpload).subscribe(product => {
         if (product) {
           this.productService.productDataEE.emit(product);
           alert("The product saved");

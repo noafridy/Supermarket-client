@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../service/product.service';
 import { Product } from '../../models/product';
+import { ActivatedRoute } from '@angular/router';
 // import { Router } from '@angular/router';
 
 @Component({
@@ -12,14 +13,19 @@ export class AllProductsByCategoryComponent implements OnInit {
   selectedCategory: String = "Milk&Eggs"
   allProducts: Product[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.refresh();
-    this.getProductByCategory(this.selectedCategory);
-    this.productService.SearchDataEE.subscribe(products => {
-      this.allProducts = products;
-    });
+
+    this.route.params.subscribe(params => {
+      this.selectedCategory = params.subcategory || "Milk&Eggs";
+
+      this.getProductByCategory(this.selectedCategory);
+      this.productService.SearchDataEE.subscribe(products => {
+        this.allProducts = products;
+      });
+   });
   }
 
   getProductByCategory(category) {

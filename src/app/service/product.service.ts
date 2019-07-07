@@ -31,8 +31,15 @@ export class ProductService {
     return this.http.get(`${this.productUrl}/${categoryName}`);
   }
 
-  addNewProduct(newProduct: Product): Observable<any> {
-    return this.http.post(this.productUrl, newProduct, httpOptions);
+  addNewProduct(newProduct: Product, fileToUpload: File): Observable<any> {
+    // return this.http.post(this.productUrl, newProduct, httpOptions);
+    const formData = new FormData();
+    formData.append('ProductName', newProduct.ProductName);
+    formData.append('category', newProduct.category);
+    formData.append('price', newProduct.price + '');
+    formData.append('img', fileToUpload.name);
+    formData.append('myImage', fileToUpload, fileToUpload.name);
+    return this.http.post(this.productUrl, formData);
   }
 
   getAllCategory(): Observable<any> {

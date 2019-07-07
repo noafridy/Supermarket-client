@@ -11,7 +11,16 @@ const routes: Routes = [
   // { path: "", pathMatch: 'full', component:  },
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'store', component: StoreComponent },
+  { 
+    path: 'store',
+    component: StoreComponent,
+    pathMatch: 'full'
+  },
+  { 
+    path: 'store/:subcategory',
+    component: StoreComponent,
+    pathMatch: 'prefix'
+  },
   { path: '',  component: HomeComponent },
   { path: 'order',  component: OrderComponent }
 
