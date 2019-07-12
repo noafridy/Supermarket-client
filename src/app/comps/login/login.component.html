@@ -1,19 +1,25 @@
 <div class="login">
-  <form class ="login-form" [formGroup]="newLoginForm" (ngSubmit)="sendForm()" >
-    <a class="btn btn-primary flaglogin" *ngIf=flaglogin routerLink="/store" >
+  <form class="login-form" [formGroup]="newLoginForm" (ngSubmit)="sendForm()">
+    <a class="btn btn-primary flaglogin" *ngIf=flaglogin routerLink="/store">
       <a *ngIf=!flagShopping> Start Shopping</a>
       <a *ngIf=flagShopping> Resume Shopping</a>
       <i class="fas fa-shopping-cart"></i>
     </a>
-  
-    <h4 class="login-title">Login</h4><br />
-  <input class="form-control" formControlName="username" placeholder="Please insert user name"><br/>
-  <input class="form-control" formControlName="password" placeholder="Please insert password"><br/>
-  <button class="btn btn-primary"> Login </button>
-  <div class="login-bottom">
-    <label class="login-link">Not a member yet?</label><a routerLink="/registration">Join now</a>
-  </div>
-</form>
-<br/>
+    <div *ngIf=flaglogin>
+        <i class="fas fa-shopping-cart big-cart-image"></i>
+    </div>
+
+    <div *ngIf=!flaglogin>
+      <h4 class="login-title">Login</h4><br />
+      <input class="form-control" formControlName="username" placeholder="Please insert user name"><br />
+      <input class="form-control" formControlName="password" placeholder="Please insert password"><br />
+      <button class="btn btn-primary"> Login </button>
+      <div class="login-bottom">
+        <label class="login-link">Not a member yet?</label><a routerLink="/registration">Join now</a>
+      </div>
+    </div>
+
+  </form>
+  <br />
 </div>
 <router-outlet></router-outlet>

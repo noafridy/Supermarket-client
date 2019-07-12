@@ -20,7 +20,17 @@
 }
 
 .right {
-    min-width: 70%;
+    width: 60%;
+    transition: width 500ms ease-in-out;
+}
+
+.right.side-bar-closed {
+    width: 100%;
+}
+
+.left {
+    position: absolute;
+    left: 0;
 }
 
 

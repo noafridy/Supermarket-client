@@ -1,6 +1,6 @@
 <div class="store-container">
 
-  <div class="right" >
+  <div class="right" [ngClass]="{'side-bar-closed': !sideBareOpen}">
     <div *ngIf="!isOrder" class="all-products">
       <app-all-products-by-category></app-all-products-by-category>
     </div>

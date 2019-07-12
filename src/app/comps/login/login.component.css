@@ -62,3 +62,12 @@
 .login-bottom {
     text-align: center;
 }
+
+.login .big-cart-image {
+    font-size: 800%;
+    color: #1ccfcf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+}

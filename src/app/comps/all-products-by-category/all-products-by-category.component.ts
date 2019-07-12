@@ -25,7 +25,7 @@ export class AllProductsByCategoryComponent implements OnInit {
       this.productService.SearchDataEE.subscribe(products => {
         this.allProducts = products;
       });
-   });
+    });
   }
 
   getProductByCategory(category) {

@@ -7,7 +7,7 @@
     background-color: yellow;
 }
 
-.cart {
+.cart .cart {
     position: relative;
     display: inline-block;
     width: 350px;
@@ -52,4 +52,27 @@ h4 {
 h6 {
     margin-left: 20px;
     color: #20599a;
+}
+
+.cart button {
+    border: none;
+    background: #20599a;
+    color: #fff;
+    width: 97%;
+    padding: 6px;
+    margin: 5px;
+}
+
+.cart .products-list i {
+    margin-left: 19px;
+    margin-right: 8px;
+}
+
+.cart .products-list img {
+    margin-right: 8px;
+}
+
+.cart .products-list {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

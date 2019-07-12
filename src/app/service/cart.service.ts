@@ -18,6 +18,7 @@ const httpOptions = {
 export class CartService {
   
   cartStatusEE:EventEmitter<any> = new EventEmitter();
+  cartSideBarEE:EventEmitter<boolean> = new EventEmitter();
 
   cartUrl: string = "api/cart";
   cartProductsUrl: string = "api/cartProduct";

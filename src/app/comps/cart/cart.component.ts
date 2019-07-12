@@ -69,6 +69,7 @@ export class CartComponent implements OnInit {
   toggleCart() {
     this.show = !this.show;
     (this.toggleShow === 'show') ? (this.toggleShow = 'hide') : (this.toggleShow = 'show');
+    this.cartService.cartSideBarEE.emit(this.show);
   }
 
   deleteItem(el) {
