@@ -32,7 +32,7 @@ export class CartComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('userInfo'));
     this.userRole = user.role;
     this.isAdmin = (this.userRole === 'admin');
-
+    debugger;
     this.cartService.getCart(user._id).subscribe(data => {  //רק אחרכ הוא נכנס לפה והכל תקין פה מבחינת נתונים
       this.allCartProducts = data.cart;
       this.activeCartId = data.cartId;

@@ -24,6 +24,10 @@ export class OrderService {
     return this.http.post(this.url, newOrder, httpOptions);
   }
 
+  getAllOrders(): Observable<any> {
+    return this.http.get(`${this.url}/getAll`);
+  }
+
   get totalCost() {
     return this._totalCost;
   }

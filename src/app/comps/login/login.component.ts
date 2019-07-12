@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
       this.cartService.getCart(userInfo._id).subscribe(data => {
         this.flagShopping = (data.cart.length > 0);
         localStorage.setItem('shoppingCartId', data.cartId);
+        this.cartService.cartStatusEE.emit(data);
       });
     }
   }
@@ -49,6 +50,7 @@ export class LoginComponent implements OnInit {
           alert(data.message);
           localStorage.setItem('shoppingCartId', data.cartId);
           this.flagShopping = (data.cart.length > 0);
+          this.cartService.cartStatusEE.emit(data);
         });
 
         localStorage.setItem('userInfo', JSON.stringify(user)); //נשמר היוזר על מפתח יוזראינפו בלוקאלסטוראג

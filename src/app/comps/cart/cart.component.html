@@ -26,7 +26,7 @@
   <div  *ngIf="!isAdmin" class="user-list">
     <div class="products-list" *ngFor="let p of allCartProducts">
       <i *ngIf="!inOrder" #messageEl class="fas fa-times" (click)="deleteItem(messageEl)" [attr.data-item-id]="p._id"></i>
-      <img src="{{p.product.img}}" style="height: 30px; width:30px;"> <span [innerHTML]="highlight(p.product.ProductName)">{{p.product.ProductName}}</span> {{p.quantity}}X
+      <img src="/api/assets/{{p.product.img}}" style="height: 30px; width:30px;"> <span [innerHTML]="highlight(p.product.ProductName)">{{p.product.ProductName}}</span> {{p.quantity}}X
       {{p.product.price}}₪
     </div>
   </div>

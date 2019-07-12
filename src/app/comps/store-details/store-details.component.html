@@ -1,9 +1,17 @@
 <div class="store-details">
-    <img class="card-img-top" src='/assets/img/data store.jpeg' alt="Supermarket">
-    <div class="card-body">
-      <p class="card-text">Available products in the store: <br/> {{ProductsLength}} Products</p>
-      <p class="card-text">Number of orders submitted in the store:</p>
-      <p class="card-text">Cart</p>
-      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+  <img class="card-img-top" src='/assets/img/data store.jpeg' alt="Supermarket">
+  <div class="card-body">
+    <p class="card-text">Available products in the store: <br /> {{ProductsLength}} Products</p>
+    <p class="card-text">Number of orders submitted in the store: {{orders}}</p>
+    <div class="CustomerCart">
+      <p class="card-text" *ngIf="cartMessage">
+        {{cartMessage}}<br/>
+        {{cartLastPurchase}}<br/>
+        {{cartTotalCost}}
+      </p>
     </div>
+
+
+    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
   </div>
+</div>

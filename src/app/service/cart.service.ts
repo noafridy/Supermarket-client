@@ -1,5 +1,5 @@
 // import { Injectable } from '@angular/core';
-import { Injectable ,EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 // import { Cart } from '../models/cart';
@@ -16,6 +16,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class CartService {
+  
+  cartStatusEE:EventEmitter<any> = new EventEmitter();
 
   cartUrl: string = "api/cart";
   cartProductsUrl: string = "api/cartProduct";

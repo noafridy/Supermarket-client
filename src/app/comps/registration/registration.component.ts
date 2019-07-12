@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
+import { CartService } from '../../service/cart.service';
 
 function MustMatch(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
@@ -38,7 +39,7 @@ export class RegistrationComponent implements OnInit {
   step2 = false;
   step1 = false;
 
-  constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder, private cartService: CartService) { }
 
   showeForm: boolean = false;
 
@@ -111,6 +112,11 @@ export class RegistrationComponent implements OnInit {
       } else {
         localStorage.setItem('userInfo', JSON.stringify(data)); //נשמר היוזר על מפתח יוזראינפו בלוקאלסטוראג
         this.userService.userInfoEE.emit(data);
+        debugger;
+        this.cartService.getCart(data._id).subscribe(data2 => {
+          localStorage.setItem('shoppingCartId', data2.cartId);
+          this.cartService.cartStatusEE.emit(data2);
+        });
         this.router.navigate(['/']);
       }
     });
