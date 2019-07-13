@@ -1,5 +1,10 @@
 <form class ="new-product-form" [formGroup]="newProductForm" (ngSubmit)="sendForm()">
-    <h4 class="title">Add New Product</h4><br />
+    <h4 *ngIf="isSave" class="title">Add New Product</h4>
+    <h4 *ngIf="!isSave" class="title">Update Product</h4>
+    <button *ngIf="!isSave" class="new-btn" (click)="newProduct()">
+      <i class="fa fa-plus"></i>
+      New
+    </button><br />
     <input class="form-control" formControlName="ProductName" placeholder="Please insert Product Name"><br/>
     <!-- <input class="form-control" formControlName="category" placeholder="Please insert category"><br/> -->
     Please select category name: <br/> 
@@ -11,7 +16,7 @@
 
     <input class="form-control" formControlName="price" placeholder="Please insert price"><br/>
     <input class="form-control" type="file" name="myImage" accept="image/*" formControlName="img" placeholder="Please insert img" (change)="handleFileInput($event.target.files)"><br/>
-    <button *ngIf="isSave" class="btn btn-primary"> Save </button>
-    <button *ngIf="!isSave" class="btn btn-primary"> Update </button>
+    <button class="save-btn" *ngIf="isSave" class="btn btn-primary"> Save </button>
+    <button class="save-btn" *ngIf="!isSave" class="btn btn-primary"> Update </button>
   </form>
   <br/>

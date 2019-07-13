@@ -1,5 +1,8 @@
 <div class="cart {{toggleShow}}">
   <h4>My Cart</h4>
+  <span *ngIf="!isAdmin">
+      <span *ngIf="!inOrder" class="delete-all" (click)="deleteAll()"><i class="far fa-trash-alt"></i> delete all</span>
+  </span>
 
   <div *ngIf="inOrder">
     <div class="form-group mb-2">
@@ -9,7 +12,6 @@
       <input [(ngModel)]="query" class="form-control">
     </div>
   </div>
-
 
 
   <i *ngIf="show" class="fas fa-chevron-left" (click)="toggleCart()"></i>
@@ -32,11 +34,9 @@
   </div>
 
   <div *ngIf="!isAdmin">
-    <h6 *ngIf="total">Total: {{total}}</h6>
-    <button *ngIf="!inOrder" (click)="showOrder()">Order</button>
+    <h6 class="total-price" *ngIf="total">Total: {{total}}</h6>
+    <button class="save-btn" *ngIf="!inOrder" (click)="showOrder()">Order</button>
     <h5 *ngIf="inOrder">No Changes Permitted Here!</h5>
-
-
 
   </div>
 </div>

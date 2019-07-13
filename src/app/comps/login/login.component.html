@@ -1,12 +1,17 @@
 <div class="login">
   <form class="login-form" [formGroup]="newLoginForm" (ngSubmit)="sendForm()">
     <a class="btn btn-primary flaglogin" *ngIf=flaglogin routerLink="/store">
-      <a *ngIf=!flagShopping> Start Shopping</a>
-      <a *ngIf=flagShopping> Resume Shopping</a>
+      <div *ngIf='!isAdmin'>
+        <a *ngIf=!flagShopping> Start Shopping</a>
+        <a *ngIf=flagShopping> Resume Shopping</a>
+      </div>
+
+      <a *ngIf='isAdmin'> Edit your store</a>
+
       <i class="fas fa-shopping-cart"></i>
     </a>
     <div *ngIf=flaglogin>
-        <i class="fas fa-shopping-cart big-cart-image"></i>
+      <i class="fas fa-shopping-cart big-cart-image"></i>
     </div>
 
     <div *ngIf=!flaglogin>

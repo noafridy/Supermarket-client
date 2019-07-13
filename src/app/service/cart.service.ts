@@ -41,6 +41,10 @@ export class CartService {
     return this.http.delete(`${this.cartProductsUrl}/${ProductID}`, httpOptions);
   }
 
+  deleteAllCartProducts(cartId: String): Observable<any> {
+    return this.http.delete(`${this.cartProductsUrl}/all/${cartId}`, httpOptions);
+  }
+
   updateCartProducts(): Observable<any> {
     return this.http.put(this.cartProductsUrl, httpOptions);
   }

@@ -27,9 +27,8 @@ export class StoreDetailsComponent implements OnInit {
       this.orders = orders.length;
     });
 
-    debugger;
     this.cartService.cartStatusEE.subscribe(data => {
-      
+
       if (data.type === 'found_last_order') {
         // print last perches
         this.cartMessage = data.message;
@@ -37,7 +36,8 @@ export class StoreDetailsComponent implements OnInit {
         this.cartLastPurchase = 'Last order Purchase: ' + data.lastOrder.DD;
 
       } else if (data.type === 'open_cart') {
-        const totalCost = (data && data.cart && data.cart[0] && data.cart[0].totalCost) || 0;
+        const totalCostExists = (data && data.cart && data.cart[0] && data.cart[0].totalCost) || 0;
+        const totalCost = totalCostExists ? data.cart.reduce((a,b) => a + b.totalCost, 0) : 0;
         this.cartMessage = data.message;
         this.cartTotalCost = 'Cart total cost: ' + totalCost;
         this.cartLastPurchase = totalCost ? 'Cart Last Purchase: ' + new Date(data.cart[0].ShoppingCart.date).toDateString() : '';

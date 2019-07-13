@@ -110,9 +110,8 @@ export class RegistrationComponent implements OnInit {
       if (data.Erorr) {
         alert(data.Erorr);
       } else {
-        localStorage.setItem('userInfo', JSON.stringify(data)); //נשמר היוזר על מפתח יוזראינפו בלוקאלסטוראג
+        localStorage.setItem('userInfo', JSON.stringify(data));
         this.userService.userInfoEE.emit(data);
-        debugger;
         this.cartService.getCart(data._id).subscribe(data2 => {
           localStorage.setItem('shoppingCartId', data2.cartId);
           this.cartService.cartStatusEE.emit(data2);

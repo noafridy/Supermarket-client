@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { CartProducts } from 'src/app/models/cartProducts';
 import { ProductService } from '../../service/product.service';
 import { CartService } from '../../service/cart.service';
 // import { ActiveCart } from 'src/app/models/activeCart';
 import { OrderService } from '../../service/order.service';
 // import { FormGroup} from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,16 +24,23 @@ export class CartComponent implements OnInit {
   inOrder: Boolean = false;
   query: string;
 
-  constructor(private productService: ProductService, private cartService: CartService, private orderService: OrderService) { }
+  constructor(private productService: ProductService, private cartService: CartService, private orderService: OrderService, private router: Router) { }
   // constructor(private userService: UserService) { }
 
   ngOnInit() {
     // this.isOrder = false;
     const user = JSON.parse(localStorage.getItem('userInfo'));
+  
+    if (!user) {
+      alert('User is not connected, please login');
+      this.router.navigate(['/']);
+      return;
+    }
+    
     this.userRole = user.role;
     this.isAdmin = (this.userRole === 'admin');
-    debugger;
-    this.cartService.getCart(user._id).subscribe(data => {  //רק אחרכ הוא נכנס לפה והכל תקין פה מבחינת נתונים
+ 
+    this.cartService.getCart(user._id).subscribe(data => {
       this.allCartProducts = data.cart;
       this.activeCartId = data.cartId;
       this.updateTotalPrice(data.cart);
@@ -50,6 +57,13 @@ export class CartComponent implements OnInit {
 
     this.orderService.showOrderEE.subscribe(data => {
       this.inOrder = false;
+    });
+  }
+
+  deleteAll() {
+    this.cartService.deleteAllCartProducts(this.activeCartId).subscribe(data => {
+      alert(data.message);
+      this.allCartProducts = [];
     });
   }
 

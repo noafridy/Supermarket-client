@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
   userCart = new Cart;
+  isAdmin: boolean = false;
 
   constructor(private userService: UserService, private router: Router, private cartService: CartService) { }
 
@@ -29,11 +30,14 @@ export class LoginComponent implements OnInit {
     if (userInfo) {
       this.flaglogin = true;
 
-      this.cartService.getCart(userInfo._id).subscribe(data => {
-        this.flagShopping = (data.cart.length > 0);
-        localStorage.setItem('shoppingCartId', data.cartId);
-        this.cartService.cartStatusEE.emit(data);
-      });
+      if (userInfo.role === 'user') {
+        this.cartService.getCart(userInfo._id).subscribe(data => {
+          this.flagShopping = (data.cart.length > 0);
+          localStorage.setItem('shoppingCartId', data.cartId);
+          this.cartService.cartStatusEE.emit(data);
+        });
+      }
+      this.isAdmin = (userInfo.role === 'admin');
     }
   }
 
@@ -46,15 +50,21 @@ export class LoginComponent implements OnInit {
       }
       if (user) {
         this.flaglogin = true;
-        this.cartService.getCart(user._id).subscribe(data => {
-          alert(data.message);
-          localStorage.setItem('shoppingCartId', data.cartId);
-          this.flagShopping = (data.cart.length > 0);
-          this.cartService.cartStatusEE.emit(data);
-        });
+        if (user.role === 'user') {
+          this.cartService.getCart(user._id).subscribe(data => {
+            alert(data.message);
+            localStorage.setItem('shoppingCartId', data.cartId);
+            this.flagShopping = (data.cart.length > 0);
+            this.cartService.cartStatusEE.emit(data);
+          });
+        }
 
-        localStorage.setItem('userInfo', JSON.stringify(user)); //נשמר היוזר על מפתח יוזראינפו בלוקאלסטוראג
+        localStorage.setItem('userInfo', JSON.stringify(user));
         this.userService.userInfoEE.emit(user);
+
+        if (user.role === 'admin') {
+          this.router.navigate(['store']);
+        }
       }
     });
   }

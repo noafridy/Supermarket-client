@@ -89,7 +89,6 @@ export class OrderComponent implements OnInit {
     if (this.orderForm.invalid) {
       return;
     }
-    debugger;
     const objData = {
       user: JSON.parse(localStorage.getItem('userInfo'))._id,
       city: this.orderForm.value.city,
@@ -105,7 +104,6 @@ export class OrderComponent implements OnInit {
       if (data.error) {
         alert(data.error);
       } else {
-        debugger;
         this.receiptId = data._id;
         this.inReception = true;
       }

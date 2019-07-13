@@ -39,6 +39,13 @@ export class NewProductComponent implements OnInit {
 
   }
 
+  newProduct() {
+    // clean fields
+    this.newProductForm.reset();
+    // change isSave
+    this.isSave = true;
+  }
+
   handleFileInput(fileInput: any) {
     this.fileToUpload = <File>fileInput[0];
   }
@@ -68,7 +75,8 @@ export class NewProductComponent implements OnInit {
 
       })
     }
-
+    // reset the form fields
+    this.newProduct();
   }
 }
 

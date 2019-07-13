@@ -7,11 +7,20 @@
      padding: 8px;
  }
 
- .title {
+ .new-product-form .title {
      color: #20599a;
      margin-top: 10px;
  }
 
- .btn {
+ .new-product-form .btn {
      width: 100%;
+ }
+
+ .new-product-form .new-btn {
+    background: #20599a;
+    font-size: 13px;
+    color: #fff;
+    margin-left: 5px;
+    border: none;
+    border-radius: 5px;
  }
